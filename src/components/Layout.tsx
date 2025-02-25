@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import {useState } from "react";
 import Modal from "./Modal";
 import { useAuth } from "../context/AuthContext";
 import Authentication from "./Authentication";
@@ -17,7 +17,7 @@ type LayoutProps = {
 
 export default function Layout({ children, taskLists }: LayoutProps) {
   const [isShowModal, setIsShowModal] = useState(false);
-  const { globalData, setGlobalData, globalUser, logOut } = useAuth();
+  const {globalUser, logOut } = useAuth();
   const header = (
     <div className="flex flex-row justify-between">
       <button className="text-gradient" onClick={() => {}}>

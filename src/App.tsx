@@ -13,7 +13,7 @@ function App() {
   const [taskLists, setTaskLists] = useState<Task[][]>([
       [{ title: "Task 1", description: "First task", isDone: false }],
     ]);
-  const { globalUser, globalData, isLoading } = useAuth();
+  const { globalUser,isLoading } = useAuth();
   const isAuthenticated = !!globalUser;
   // const isData = globalData && !!Object.keys(globalData || {}).length;
 
