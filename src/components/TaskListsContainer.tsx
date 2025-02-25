@@ -36,6 +36,12 @@ export default function TaskListContainer() {
     newTaskLists[listIndex][taskIndex].isDone = true
     setTaskLists(newTaskLists);
   }
+  function handleEditTask(listIndex:number, taskIndex: number, taskTitle:string, taskDescription:string) {
+    const newTaskLists = [...taskLists];
+    newTaskLists[listIndex][taskIndex].title=taskTitle
+    newTaskLists[listIndex][taskIndex].description=taskDescription
+    setTaskLists(newTaskLists);
+  }
   return (
     <div className="flex flex-col gap-4">
       <TaskListInput handleAddList={handleAddList} />
@@ -50,6 +56,7 @@ export default function TaskListContainer() {
               handleDeleteList={handleDeleteList}
               handleDeleteTask={handleDeleteTask}
               handleFinishTask={handleFinishTask}
+              handleEditTask={handleEditTask}
             />
           );
         })}
