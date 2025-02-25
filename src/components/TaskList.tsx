@@ -6,36 +6,58 @@ type Task = {
   isDone: boolean;
 };
 type TaskListProps = {
-    list: Task[],
-    handleAddTask?: (listIndex:number, task: Task,) => void,
-    listIndex: number,
-    handleDeleteList?: (listIndex:number) => void,
-    handleDeleteTask?: (listIndex:number, taskIndex:number) => void
+  list: Task[];
+  handleAddTask?: (listIndex: number, task: Task) => void;
+  listIndex: number;
+  handleDeleteList?: (listIndex: number) => void;
+  handleDeleteTask?: (listIndex: number, taskIndex: number) => void;
+  handleFinishTask?: (listIndex: number, taskIndex: number) => void;
 };
 
-export default function TaskList({list, handleAddTask, listIndex, handleDeleteList, handleDeleteTask}: TaskListProps) {
+export default function TaskList({
+  list,
+  handleAddTask,
+  listIndex,
+  handleDeleteList,
+  handleDeleteTask,
+  handleFinishTask,
+}: TaskListProps) {
   return (
     <div className="tasklist-card flex flex-col gap-20 justify-between">
       <div>
-      {list.map((task, taskIndex)=>{
-        return (
-          <div key={taskIndex}>
-          <TaskCard key={taskIndex} task={task} />
-          <button onClick={()=>{
-            if(handleDeleteTask) {
-              handleDeleteTask(listIndex, taskIndex)
-            }
-          }}>Delete Task</button>
-          </div>
-        )
-      })}
+        {list.map((task, taskIndex) => {
+          return (
+            <div key={taskIndex}>
+              <TaskCard
+                key={taskIndex}
+                task={task}
+                handleFinishTask={handleFinishTask}
+                listIndex={listIndex}
+                taskIndex={taskIndex}
+              />
+              <button
+                onClick={() => {
+                  if (handleDeleteTask) {
+                    handleDeleteTask(listIndex, taskIndex);
+                  }
+                }}
+              >
+                Delete Task
+              </button>
+            </div>
+          );
+        })}
       </div>
       <TaskInput listIndex={listIndex} handleAddTask={handleAddTask} />
-      <button onClick={()=>{
-        if(handleDeleteList) {
-          handleDeleteList(listIndex)
-        }
-      }}>Delete List</button>
+      <button
+        onClick={() => {
+          if (handleDeleteList) {
+            handleDeleteList(listIndex);
+          }
+        }}
+      >
+        Delete List
+      </button>
     </div>
   );
 }
