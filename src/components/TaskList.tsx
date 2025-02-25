@@ -19,7 +19,7 @@ export default function TaskList({list, handleAddTask, listIndex, handleDeleteLi
       <div>
       {list.map((task, taskIndex)=>{
         return (
-          <div>
+          <div key={taskIndex}>
           <TaskCard key={taskIndex} task={task} />
           <button onClick={()=>{
             if(handleDeleteTask) {

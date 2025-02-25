@@ -11,9 +11,9 @@ export default function Modal({ children, handleCloseModal }: ModalProps) {
   if (!portalElement) return null;
 
   return ReactDom.createPortal(
-    <div className="fixed top-0 left-0 h-screen w-screen flex flex-col items-center justify-center z-50 p-4">
-      <button onClick={handleCloseModal} className="absolute inset-0 bg-slate-100 opacity-80 z-40 w-full hover:transform-none shadow-none" />
-      <div className="relative z-50 max-w-xl w-full mx-auto min-h-[400px] rounded-lg border border-slate-200 bg-white p-4 flex flex-col gap-4">{children}</div>
+    <div className="modal-container">
+      <button onClick={handleCloseModal} className="modal-underlay" />
+      <div className="model-content">{children}</div>
     </div>,
     portalElement
   );
