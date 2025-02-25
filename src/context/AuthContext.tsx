@@ -20,7 +20,6 @@ type AuthContextType = {
   logOut: () => Promise<void>;
 };
 
-// Fix 3: Provide a valid empty object instead of `null`
 const AuthContext = createContext<AuthContextType>({} as AuthContextType);
 
 export function useAuth() {
@@ -32,7 +31,7 @@ export function useAuth() {
 }
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
-  // Fix 1: Use a function for the initial value to avoid inference issues
+
   const [globalUser, setGlobalUser] = useState<User | null>(() => null);
   const [globalData, setGlobalData] = useState<{} | null>(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -54,7 +53,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       console.log("CURRENT USER: ", user);
-      setGlobalUser(user as User | null); // Fix 2: Explicitly cast user
+      setGlobalUser(user as User | null); 
 
       if (!user) {
         console.log("No active user");
@@ -74,7 +73,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         }
         setGlobalData(firebaseData);
       } catch (err) {
-        console.log(err);
+        console.error(err);
       } finally {
         setIsLoading(false);
       }

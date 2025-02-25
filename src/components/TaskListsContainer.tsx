@@ -1,4 +1,3 @@
-import { useState } from "react";
 import TaskList from "./TaskList";
 import TaskListInput from "./TaskListInput";
 
@@ -7,10 +6,11 @@ type Task = {
   description: string;
   isDone: boolean;
 };
-export default function TaskListContainer() {
-  const [taskLists, setTaskLists] = useState<Task[][]>([
-    [{ title: "Task 1", description: "First task", isDone: false }],
-  ]);
+type TaskListsProps = {
+  taskLists: Task[][]
+  setTaskLists: (taskLists:Task[][]) => void
+};
+export default function TaskListContainer({taskLists, setTaskLists} : TaskListsProps) {
   function handleAddList(list: Task[]) {
     const newTaskLists = [...taskLists];
     newTaskLists.push(list);
