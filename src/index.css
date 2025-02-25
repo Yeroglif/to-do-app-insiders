@@ -46,3 +46,16 @@
     justify-content: center; */
     gap: 1rem;
   }
+
+  .tasklist-card {
+    font-size: 1em;
+    background-color: var(--background-muted);
+    border: 1px solid var(--border-secondary);
+    color: var(--color-primary);
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--border-radius-small);
+    width: 100%;
+    /* max-width: fit-content; */
+    outline: none;
+    appearance: none;
+  }

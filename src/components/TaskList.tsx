@@ -7,15 +7,15 @@ type Task = {
 };
 type TaskListProps = {
     list: Task[],
-    handleAddTask: (listIndex:number, task: Task,) => void,
+    handleAddTask?: (listIndex:number, task: Task,) => void,
     listIndex: number,
-    handleDeleteList: (listIndex:number) => void,
-    handleDeleteTask: (listIndex:number, taskIndex:number) => void
+    handleDeleteList?: (listIndex:number) => void,
+    handleDeleteTask?: (listIndex:number, taskIndex:number) => void
 };
 
 export default function TaskList({list, handleAddTask, listIndex, handleDeleteList, handleDeleteTask}: TaskListProps) {
   return (
-    <div className="border-solid border-4 flex flex-col gap-2">
+    <div className="tasklist-card flex flex-col gap-20 justify-between">
       <div>
       {list.map((task, taskIndex)=>{
         return (

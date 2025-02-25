@@ -14,7 +14,7 @@ export default function TaskInput({listIndex, handleAddTask }: TaskInputProps) {
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
   return (
-    <div className="flex flex-col border-solid border-1 gap-2">
+    <div className="flex flex-col">
       <input onChange={(e)=>{
         setTitle(e.target.value)
       }} value={title} placeholder="Enter task title" />
