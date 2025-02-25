@@ -1,16 +1,30 @@
 type Task = {
-    title: string;
-    description: string;
-    isDone: boolean;
-  };
+  title: string;
+  description: string;
+  isDone: boolean;
+};
 type TaskListInputProps = {
-    setTaskLists?: (taskLists: Task[][]) => void 
+  handleAddList?: (list: Task[]) => void;
 };
 
-export default function TaskListInput({setTaskLists}: TaskListInputProps) {
+export default function TaskListInput({ handleAddList }: TaskListInputProps) {
   return (
     <div>
-      
+      <button
+        onClick={() => {
+          if (handleAddList) {
+            handleAddList([
+              {
+                title: "Task 1",
+                description: "First task",
+                isDone: false,
+              },
+            ]);
+          }
+        }}
+      >
+        Add list
+      </button>
     </div>
   );
 }
